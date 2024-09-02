@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nourish Nation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .header {
+            text-align: center;
+            padding: 50px 0;
+            background-color: #28a745;
+            color: white;
+        }
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        .header p {
+            font-size: 1.5rem;
+        }
+        .intro-section {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .intro-section p {
+            font-size: 1.25rem;
+        }
+        .diet-bowl {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .diet-bowl img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+        .diet-bowl h5 {
+            margin-top: 10px;
+        }
+        .diet-bowl .price {
+            font-weight: bold;
+            margin-top: 5px;
+            color: #28a745;
+        }
+        .order-section {
+            display: none;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .order-success {
+            display: none;
+            text-align: center;
+            padding: 50px;
+            background-color: #28a745;
+            color: white;
+            border-radius: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Nourish Nation</h1>
+        <p>Most affordable Farm Fresh Diet Bowls at Your Doorstep</p>
+    </div>
+
+    <div class="container my-5">
+        <!-- Introduction Section -->
+        <div class="intro-section">
+            <h2>Select your favorite diet bowl</h2>
+            <p>We have a direct tie-up with farmers, which helps us curate the best diet bowls using farm-fresh veggies at affordable rates just for you. We also offer monthly plans for continued wellness.</p>
+        </div>
+
+        <div class="row">
+            <!-- Diet Bowl Options in a Row -->
+            <div class="col-md-3 diet-bowl">
+                <img src="a.jpg" alt="Avocado Toast">
+                <h5 class="mt-2">Avocado Toast</h5>
+                <p class="price">Rs.169</p>
+                <input type="checkbox" onclick="selectBowl('Avocado Toast')"> Select
+            </div>
+            <div class="col-md-3 diet-bowl">
+                <img src="b.jpg" alt="Cheese Omelet">
+                <h5 class="mt-2">Cheese Omelet</h5>
+                <p class="price">Rs.149</p>
+                <input type="checkbox" onclick="selectBowl('Cheese Omelet')"> Select
+            </div>
+            <div class="col-md-3 diet-bowl">
+                <img src="d.jpg" alt="Greek Salad">
+                <h5 class="mt-2">Greek Salad</h5>
+                <p class="price">Rs.169</p>
+                <input type="checkbox" onclick="selectBowl('Greek Salad')"> Select
+            </div>
+            <div class="col-md-3 diet-bowl">
+                <img src="f.jpg" alt="Quinoa Bowl">
+                <h5 class="mt-2">Quinoa Bowl</h5>
+                <p class="price">Rs.229</p>
+                <input type="checkbox" onclick="selectBowl('Quinoa Bowl')"> Select
+            </div>
+            <div class="col-md-3 diet-bowl">
+                <img src="g.jpg" alt="Fruit Smoothie Bowl">
+                <h5 class="mt-2">Fruit Smoothie Bowl</h5>
+                <p class="price">Rs.149</p>
+                <input type="checkbox" onclick="selectBowl('Fruit Smoothie Bowl')"> Select
+            </div>
+            <div class="col-md-3 diet-bowl">
+                <img src="h.jpg" alt="Grilled Chicken Bowl">
+                <h5 class="mt-2">Grilled Chicken Bowl</h5>
+                <p class="price">Rs.269</p>
+                <input type="checkbox" onclick="selectBowl('Grilled Chicken Bowl')"> Select
+            </div>
+            <div class="col-md-3 diet-bowl">
+                <img src="c.webp" alt="Veggie Burrito Bowl">
+                <h5 class="mt-2">Veggie Burrito Bowl</h5>
+                <p class="price">Rs.169</p>
+                <input type="checkbox" onclick="selectBowl('Veggie Burrito Bowl')"> Select
+            </div>
+            <div class="col-md-3 diet-bowl">
+                <img src="k.jpg" alt="Tofu Stir-fry Bowl">
+                <h5 class="mt-2">Tofu Stir-fry Bowl</h5>
+                <p class="price">Rs.189</p>
+                <input type="checkbox" onclick="selectBowl('Tofu Stir-fry Bowl')"> Select
+            </div>
+        </div>
+
+        <!-- Order Section -->
+        <div id="orderSection" class="order-section">
+            <h4 class="mb-4">Order Details</h4>
+            <form id="orderForm">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="number" class="form-label">Phone Number</label>
+                    <input type="text" class="form-control" id="number" pattern="^\d{10,}$" title="Please enter a valid phone number with at least 10 digits" required>
+                </div>
+                <div class="mb-3">
+                    <label for="address" class="form-label">Address</label>
+                    <textarea class="form-control" id="address" rows="3" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-success">Place Order</button>
+            </form>
+        </div>
+
+        <!-- Order Success Message -->
+        <div id="orderSuccess" class="order-success">
+            <h4>Order successful!</h4>
+            <p>Your order will be delivered within 30 minutes.</p>
+        </div>
+    </div>
+
+    <script>
+        function selectBowl(bowlName) {
+            document.querySelector('#orderSection').style.display = 'block';
+            document.querySelector('#orderSection h4').innerText = 'Order Details for ' + bowlName;
+            // Deselect other checkboxes
+            document.querySelectorAll('.diet-bowl input[type="checkbox"]').forEach(cb => {
+                if (cb.nextElementSibling.innerText !== bowlName) {
+                    cb.checked = false;
+                }
+            });
+            // Scroll to the order section
+            document.querySelector('#orderSection').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        document.querySelector('#orderForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            document.querySelector('#orderSection').style.display = 'none';
+            document.querySelector('#orderSuccess').style.display = 'block';
+        });
+    </script>
+
+</body>
+</html>
